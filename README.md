@@ -1,4 +1,4 @@
-# dsa210begum
+# Dsa210begum
 # Analyzing Personal Netflix Viewing Patterns
 
 ## Introduction
