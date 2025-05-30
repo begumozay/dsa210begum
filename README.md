@@ -102,7 +102,7 @@ This project aims to provide:
 ---
 
 ## Hypothesis Testing
-
+I framed my tests around the idea that Netflix viewing behavior—whether measured by daily view counts, binge-watch frequency, or total session duration—would differ between weekends and weekdays and also vary seasonally (e.g. winter vs. summer), and then used t-tests and a χ² test to evaluate those specific null hypotheses.
 | Test                                        | Statistic    | p-value  | Conclusion                          |
 |---------------------------------------------|-------------:|---------:|-------------------------------------|
 | Weekend vs Weekday daily views              | t = 1.68     | 0.0943   | No significant difference (α=0.05)  |
