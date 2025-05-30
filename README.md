@@ -1,4 +1,4 @@
-# Dsa210begum
+# DSA210 - Begüm Özay
 # Analyzing Personal Netflix Viewing Patterns
 
 ## Introduction
