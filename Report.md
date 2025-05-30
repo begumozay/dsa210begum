@@ -4,7 +4,7 @@
 
 ## 1. Introduction
 
-This report presents an in-depth analysis of personal Netflix viewing activity for the user **begüm**, covering the period from January 2019 through May 2025. The objectives are:
+This report presents an in-depth analysis of personal Netflix viewing activity for **begüm**, covering the period from January 2019 through May 2025. The objectives are:
 
 1. **Characterize temporal viewing patterns** at daily, weekly, and hourly resolutions.  
 2. **Compare content types** (series vs. movies) and identify top titles.  
@@ -41,7 +41,7 @@ All subsequent figures and statistics derive from this cleaned DataFrame, referr
 
 ### 3.1 Monthly and Weekly Duration Trends
 
-![Monthly & Weekly Watch Duration and Heatmap](sandbox:/mnt/data/fig1_day_of_week.png)
+![Monthly & Weekly Watch Duration and Heatmap](fig1_day_of_week.png)
 
 - **Top-left**: **Monthly watch duration** (sum of minutes per calendar month).  
   - Notable peaks: **January 2022** (~4,900 min), **November 2024** (~4,800 min), **March 2025** (~4,500 min).  
@@ -61,7 +61,7 @@ All subsequent figures and statistics derive from this cleaned DataFrame, referr
 
 ### 3.2 Day-of-Week Distribution
 
-![Top 10 Series & Season Distribution](sandbox:/mnt/data/fig2.png)
+![Top 10 Series & Season Distribution](fig2.png)
 
 - Although this figure labels **Series vs Movie share**, it also reveals aggregate counts for each category:
   - **Series** constitute **72.6 %** of all sessions; **Movies** account for **27.4 %**.  
@@ -73,7 +73,7 @@ All subsequent figures and statistics derive from this cleaned DataFrame, referr
 
 ### 4.1 Top Series Titles
 
-![Top 10 Series Viewed & Episode Durations](sandbox:/mnt/data/fig3.png)
+![Top 10 Series Viewed & Episode Durations]fig3.png)
 
 - **Top-left subplot** (**Top 10 Series Viewed**):  
   - **Friends**: 359 episodes watched (cumulative count), by far the most‐watched series title.  
@@ -98,7 +98,7 @@ All subsequent figures and statistics derive from this cleaned DataFrame, referr
 
 ### 4.2 Series vs. Movie Share (Revisited)
 
-![Pie Chart: Series vs Movie Share](sandbox:/mnt/data/fig2.png)
+![Pie Chart: Series vs Movie Share](fig2.png)
 
 - The pie chart reiterates that **nearly three-quarters of all sessions** are episodes of TV series, reinforcing the user’s strong preference for serial content over stand-alone movies.
 
@@ -110,7 +110,7 @@ Binge days are defined as calendar dates on which the user watched **3 or more**
 
 ### 5.1 Monthly Binge Statistics
 
-![Binge Watching Patterns](sandbox:/mnt/data/fig4.png)
+![Binge Watching Patterns](fig4.png)
 
 - **Subplot (1): Average Binge Size by Month** (upper-left)  
   - **March (12.6 episodes)** and **April (12.5)** are peak months for binge session size.  
@@ -141,7 +141,7 @@ We aggregated session counts and durations by meteorological season:
 - **Summer**: June, July, August  
 - **Fall**: September, October, November  
 
-![Seasonal Viewing Patterns](sandbox:/mnt/data/fig5.png)
+![Seasonal Viewing Patterns](fig5.png)
 
 - **Subplot (1): Total Views by Season** (upper-left)  
   - **Fall** has the highest number of distinct viewing sessions (**1100**).  
@@ -174,7 +174,7 @@ We aggregated session counts and durations by meteorological season:
 
 ### 7.1 Correlation Matrix and Scatter Plot
 
-![Correlation Matrix & Session Duration vs Hour](sandbox:/mnt/data/fig6.png)
+![Correlation Matrix & Session Duration vs Hour](fig6.png)
 
 - **Subplot (1) (Left): Correlation Matrix**  
   - **Variables**:  
