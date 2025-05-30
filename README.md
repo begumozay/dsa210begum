@@ -72,32 +72,30 @@ This project aims to provide:
 
 ## Exploratory Data Analysis
 
-### 1. Watch Count by Day of Week  
-![Watch Count by Day of Week](fig1_day_of_week.png)  
+### 1.  Viewing Trends Over Time  
+![Viewing Trends Over Time](fig1_day_of_week.png)  
 
-### 2. Watch Count by Time of Day  
-![Watch Count by Time of Day](fig2_time_of_day.png)  
+### 2.  Series Watching Patterns  
+![ Series Watching Patterns](fig2.png)  
 
-### 3. Holiday vs Non-Holiday Usage  
-![Holiday vs Non-Holiday](fig3_holiday_vs_nonholiday.png)  
+### 3.  Movie vs Series Distribution
+![Movie vs Series Distribution](fig3.png)  
 
-### 4. Session Duration Distribution  
-![Session Duration](fig4_session_duration.png)  
+### 4.  Binge Watching Patterns
+![Binge Watching Patterns](fig4.png)  
 
-### 5. Binge Watching Trends  
-![Binge Trends](fig5_binge_trends.png)  
+### 5.  Seasonal Viewing Patterns
+![Seasonal Viewing Patterns](fig5.png)  
 
-### 6. Views by Season  
-![Views by Season](fig6_views_by_season.png)  
+### 6.  Correlation & Trend Analysis
+![Correlation & Trend Analysis](fig6.png)  
 
-### 7. Watch Duration by Season  
-![Duration by Season](fig7_duration_by_season.png)  
+### 7.  Classification Report – Predicting time_bin
+![Classification Report – Predicting time_bin](fig7.png)  
 
-### 8. Correlation Matrix  
-![Correlation Matrix](fig8_corr_matrix.png)  
+### 8.  Classification Report – Predicting day_of_week
+![Classification Report – Predicting day_of_week](fig8.png)  
 
-### 9. Rolling 3-Month Moving Average of Daily Views  
-![Rolling Trend](fig9_rolling_trend.png)  
 
 *(…plus 6 more plots in the notebook: heatmaps for day×hour, KDE of time-bin distributions, autocorrelation, pair-plots, elbow plot for sessions, etc.)*
 
