@@ -135,7 +135,7 @@ Binge days are defined as calendar dates on which the user watched **3 or more**
 
 ## 6. Seasonal Viewing Patterns
 
-We aggregated session counts and durations by meteorological season:  
+I aggregated session counts and durations by meteorological season:  
 - **Winter**: December, January, February  
 - **Spring**: March, April, May  
 - **Summer**: June, July, August  
@@ -201,7 +201,7 @@ We aggregated session counts and durations by meteorological season:
 
 ## 8. Hypothesis Testing
 
-We evaluate three hypotheses at a significance level α = 0.05:
+I evaluate three hypotheses at a significance level α = 0.05:
 
 ### 8.1 Weekend vs. Weekday Daily Views
 
@@ -300,7 +300,7 @@ Moving average smooths extreme highs/lows, illustrating cyclical “rise–fall�
 
 
 ## 10. Machine Learning: Predicting Viewing Context
-We built and evaluated Random Forest classifiers for two tasks:
+I built and evaluated Random Forest classifiers for two tasks:
 
 Predicting the day of week (Monday…Sunday) given features:
 
