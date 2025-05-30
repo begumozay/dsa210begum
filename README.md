@@ -138,15 +138,13 @@ MAE: 6.04, R²: -0.250
 
 ---
 
-## Conclusions
+## Results
 
 - **Temporal patterns**: peaks in mid-week mornings.  
 - **Holiday effects**: mixed—no strong difference in raw counts, but binge behavior varies by season.  
 - **Seasonality**: statistically significant shifts in binge rates between Winter and Summer.  
 - **Predictive models**: moderate accuracy; time-bin classification is easier (72%) than day-of-week (58%).  
-- **Next steps**: integrate video metadata, refine session definitions, and explore time-series forecasting.
 
 ---
 
-> _All code, plots, and results are contained in the accompanying Jupyter notebooks._  
 
