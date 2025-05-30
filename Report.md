@@ -225,3 +225,146 @@ wday = daily.loc[daily['IsWeekend'] == 0, 'ViewsPerDay']
 t1, p1 = stats.ttest_ind(wknd, wday, equal_var=False)
 
 print(f"Weekend vs Weekday Views: t = {t1:.2f}, p = {p1:.4f}")
+```
+
+Result: t = 1.68, p = 0.0943 → Fail to reject H₀.
+
+Interpretation: No statistically significant difference in average daily session counts between weekends and weekdays.
+
+### 8.2 Winter vs. Summer Binge Rates
+
+```python
+adv['SeasonBin'] = adv['timestamp'].dt.month.apply(month_to_season)
+binge = adv.groupby('DateOnly').agg({
+    'ViewsPerDay': 'first',
+    'SeasonBin':   'first'
+}).reset_index(drop=True)
+binge['IsBinge'] = (binge['ViewsPerDay'] >= 3).astype(int)
+
+tbl = pd.crosstab(binge['SeasonBin'], binge['IsBinge'])
+chi2, p2, _, _ = stats.chi2_contingency(tbl.loc[['Winter', 'Summer']])
+print(f"Winter vs Summer Binge Rates: chi2 = {chi2:.2f}, p = {p2:.4f}")
+
+```
+Result: χ² = 8.41, p = 0.0037 → Reject H₀.
+
+Interpretation: Binge‐watching (≥ 3 episodes/day) is significantly more common in Winter than in Summer.
+
+
+
+### 8.3 Weekend vs. Weekday Total Duration
+
+```python
+
+daily_dur = adv.groupby('DateOnly')['duration_min'].sum().reset_index(name='TotalDuration')
+daily_dur['IsWeekend'] = pd.to_datetime(daily_dur['DateOnly']).dt.dayofweek.isin([5,6]).astype(int)
+
+dur_wknd = daily_dur.loc[daily_dur['IsWeekend'] == 1, 'TotalDuration']
+dur_wday = daily_dur.loc[daily_dur['IsWeekend'] == 0, 'TotalDuration']
+t3, p3   = stats.ttest_ind(dur_wknd, dur_wday, equal_var=False)
+
+print(f"Weekend vs Weekday Duration: t = {t3:.2f}, p = {p3:.4f}")
+
+```
+Result: t = 1.17, p = 0.2447 → Fail to reject H₀.
+
+Interpretation: No significant difference in total minutes watched per day on weekends vs. weekdays.
+
+
+## 9. Advanced Correlation & Trend Analysis
+### 9.1 Composite Visualization
+Subplot (1) (Top-left): Correlation Matrix
+
+See Section 7.1 for detailed discussion.
+
+Subplot (2) (Top-right): Session Duration vs. Hour (Weekend vs Weekday)
+
+Identical to the scatter in Section 7.1, confirming no clear clustering by weekend vs. weekday in session lengths.
+
+Subplot (3) (Bottom-left): Monthly Proportion of Series vs Movie
+
+For each calendar month (1 – 12), bars display the proportion of total minutes attributed to Movies (light) vs. Series (dark).
+
+In every month, Series account for ≥ 60 % of total minutes; e.g., April has ~57 % Series, August ~83 % Series.
+
+Lowest Series share in April (~57 %), highest in September (~88 %).
+
+Subplot (4) (Bottom-right): Monthly Watch Duration & 3-Month Moving Average
+
+Pink circles: monthly total minutes; magenta squares connected by dashed line: 3-month moving average.
+
+Peaks: Jan 2022 (≈ 4,900 min), Nov 2024 (≈ 4,800 min), Mar 2025 (≈ 4,500 min).
+
+Moving average smooths extreme highs/lows, illustrating cyclical “rise–fall” roughly every 12 months.
+
+
+
+## 10. Machine Learning: Predicting Viewing Context
+We built and evaluated Random Forest classifiers for two tasks:
+
+Predicting the day of week (Monday…Sunday) given features:
+
+hour (0–23), DayNum (0–6), IsWeekend (0/1), MonthNum (1–12), ViewsPerDay.
+
+Predicting the time bin (Morning, Afternoon, Evening, Night) based on hour only (trivially mapped).
+
+### 10.1 Model Performance: Day of Week
+Confusion matrix rows = true labels; columns = predicted labels.
+
+Friday (Row “Friday”):
+
+True Friday sessions: 102 total; 33 predicted correctly as “Friday,” 24 misclassified as “Monday,” 10 as “Thursday,” 20 as “Tuesday,” 15 as “Wednesday.”
+
+Accuracy for Friday: 33/102 ≈ 32 %.
+
+Monday (Row “Monday”):
+
+119 total; 52 predicted correctly, 19 misclassified as “Wednesday,” 24 as “Tuesday,” 16 as “Friday,” 8 as “Thursday.”
+
+Accuracy for Monday: 52/119 ≈ 44 %.
+
+Saturday (Row “Saturday”):
+
+126 total; 79 predicted correctly (63 %), 47 misclassified as “Sunday.”
+
+Sunday (Row “Sunday”):
+
+142 total; 98 correct (69 %), 44 misclassified as “Saturday.”
+
+Thursday (Row “Thursday”):
+
+58 total; 17 correct (29 %), 18 predicted “Monday,” 14 predicted “Friday,” 12 predicted “Tuesday,” 7 predicted “Wednesday.”
+
+Tuesday (Row “Tuesday”):
+
+87 total; 28 correct (32 %), 22 predicted “Monday,” 15 predicted “Wednesday,” 13 predicted “Thursday,” 9 predicted “Friday.”
+
+Wednesday (Row “Wednesday”):
+
+93 total; 33 correct (35 %), 25 predicted “Monday,” 14 predicted “Friday,” 13 predicted “Tuesday,” 8 predicted “Thursday.”
+
+Summary:
+
+Highest recall for Sunday (69 %) and Saturday (63 %).
+
+Lowest recall for Friday (32 %) and Tuesday (32 %).
+
+Overall accuracy across all classes is moderate (~40 %).
+
+Interpretation: Day‐of‐week patterns are not strongly differentiable by basic features; user’s viewing does not follow a reliable weekday signature.
+
+### 10.2 Model Performance: Time Bin
+Rows = true labels, columns = predicted labels among four bins: Afternoon, Evening, Morning, Night.
+
+Afternoon: 271/271 correct (100 %).
+
+Evening: 295/295 correct (100 %).
+
+Morning: 124/124 correct (100 %).
+
+Night: 47/47 correct (100 %).
+
+Interpretation: Because time_bin is deterministically mapped from hour, classification is trivial. Model essentially learned the mapping hour ∈ [6,12) → Morning, [12,18) → Afternoon, [18,24) → Evening, [0,6) → Night.
+
+
+
