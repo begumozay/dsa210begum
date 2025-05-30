@@ -118,14 +118,14 @@ This project aims to provide:
 - **Model**: RandomForestClassifier (200 trees)  
 - **Accuracy**: 72%  
 - **Confusion Matrix**:  
-  ![CM time_bin](fig10_cm_time_bin.png)  
+  ![CM time_bin](fig7.png)  
 
 ### 2. Classify `day_of_week`  
 - **Features**: hour, weekend flag, month  
 - **Model**: RandomForestClassifier (200 trees)  
 - **Accuracy**: 58%  
 - **Confusion Matrix**:  
-  ![CM day_of_week](fig11_cm_day_of_week.png)  
+  ![CM day_of_week](fig8.png)  
 
 ### 3. Regress Daily View Count  
 - **Features**: weekday number, weekend flag, month  
@@ -133,7 +133,8 @@ This project aims to provide:
 - **MAE**: 2.3 views/day  
 - **R²**: 0.68  
 - **Predicted vs True**:  
-  ![Pred vs True](fig12_pred_vs_true.png)  
+Regression Results – Predicting Daily Views
+MAE: 6.04, R²: -0.250
 
 ---
 
